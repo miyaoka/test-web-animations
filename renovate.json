@@ -1,9 +1,19 @@
 {
   "extends": ["config:base"],
+  "labels": ["dependencies"],
+  "dependencyDashboard": true,
+  "automerge": true,
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
-      "automerge": true
+      "groupName": "devDependencies",
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "dependencies (non-major)",
+      "rangeStrategy": "pin"
     }
   ]
 }
